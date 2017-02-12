@@ -5,7 +5,6 @@
 const StateDropdownComponent = (props) => {
   return (
     <select
-      style={styles.selectStyle}
       name="state"
       onChange={function(e){
         props.handleChange(e, props.property)
@@ -63,12 +62,6 @@ const StateDropdownComponent = (props) => {
       <option value="WY">Wyoming</option>
     </select>
   );
-}
-
-const styles = {
-  selectStyle: {
-    display: 'inline',
-  }
 }
 
 export default StateDropdownComponent
