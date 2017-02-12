@@ -1,4 +1,4 @@
-const request = require('request');
+//const request = require('request');
 
 const getPicInfo = (req,res) => {
   let api_key = process.env.Google_Image_Key;

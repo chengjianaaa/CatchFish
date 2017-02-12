@@ -1,5 +1,5 @@
 //using clarifai
-const request = require('request');
+// request = require('request');
 const Clarifai = require('clarifai');
 
 // instantiate a new Clarifai app passing in your clientId and clientSecret

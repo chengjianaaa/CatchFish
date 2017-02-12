@@ -14,14 +14,13 @@ app.use((req, res, next) => {
   next();
 });
 app.set('views', __dirname - '/server' + '/client/views');
-app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use(express.static(__dirname - '/server' + '/client/views'));
 app.use(bodyParser.json());
 
 
 // Routes
-require('./routes/routes')(app);
+// require('./routes/routes')(app);
 
 app.listen(port, function() {
   console.log('The magic is on ' + ip + ':' + port);
