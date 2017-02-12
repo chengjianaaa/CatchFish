@@ -48,29 +48,37 @@ class SearchFormComponent extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
-
+      <div className="flex-container horiz main">
         <Dropzone
           multiple={false}
           accept="image/*"
-          onDrop={this.onImageDrop.bind(this)}>
+          onDrop={this.onImageDrop.bind(this)}
+          className="flex-item">
           <p>Drop an image!</p>
         </Dropzone>
 
-        <InputComponent handleChange={this.handleChange.bind(this)} property={'firstName'} placeholder={"First Name"}/>
+        <div className="inputs flex-container vert">
+          <div className="flex-container horiz">
+            <InputComponent handleChange={this.handleChange.bind(this)} property={'firstName'} className="flex-item" placeholder={"First Name"}/>
 
-        <InputComponent handleChange={this.handleChange.bind(this)}  property={'lastName'} placeholder={"Last Name"}/>
+            <InputComponent handleChange={this.handleChange.bind(this)}  property={'lastName'} className="flex-item" placeholder={"Last Name"}/>
+          </div>
 
-        <InputComponent handleChange={this.handleChange.bind(this)} property={'email'} placeholder={"Email"}/>
+          <InputComponent handleChange={this.handleChange.bind(this)} property={'email'} className="flex-item" placeholder={"Email"}/>
 
-        <InputComponent type="tel" handleChange={this.handleChange.bind(this)} property={'phone'} placeholder={"Phone"}/>
+          <InputComponent handleChange={this.handleChange.bind(this)} property={'facebook'} className="flex-item" placeholder={"Facebook URL"}/>
 
-        <InputComponent handleChange={this.handleChange.bind(this)} property={'linkedIn'} placeholder={"linkedIn URL"}/>
+          <div className="flex-container horiz">
+            <InputComponent type="tel" handleChange={this.handleChange.bind(this)} property={'phone'} className="flex-item" placeholder={"Phone"}/>
 
-        <InputComponent handleChange={this.handleChange.bind(this)} property={'facebook'} placeholder={"Facebook URL"}/>
+            <StateDropdownComponent handleChange={this.handleChange.bind(this)} property={'state'} className="flex-item" placeholder={"State"}/>
+          </div>
 
-        <StateDropdownComponent handleChange={this.handleChange.bind(this)} property={'state'} placeholder={"State"}/>
+          <input type="submit" value="Submit" className="flex-item submit"/>
 
-        <input type="submit" value="Submit" />
+        </div>
+
+        </div>
 
       </form>
     )
