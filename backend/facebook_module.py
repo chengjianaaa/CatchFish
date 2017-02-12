@@ -6,6 +6,7 @@ import facebook
 import urllib.parse
 import urllib.request
 import requests
+import datetime
 
 APP_SECRET='4b768f8a218db2a17f34710b34d38c8f'
 APP_ID='1760577657593271'
@@ -13,7 +14,7 @@ APP_ID='1760577657593271'
 # 1. Register to be a Facebook developer here: https://developers.facebook.com/apps (App: CatchFish)
 # 2. Get token from Facebook here: https://developers.facebook.com/tools/explorer/
 # 3. Paste the token below
-user_token="EAACEdEose0cBAOXYpSZB7ZAJNYKZCh84cQLZCFlJynpTZCZBCaWwS7EKoXBu85jMs79ZBTARmZBCotxoOlU4tpyOyPpyUfAkAc78EfgdGinQBEvgAPPcNji4MVg1KeRW9ElAVaZAcPrmI6xUxifb1B4ZBwuzokUiQm1Ih3fADAkV4eSJmag3r0vZAuhZC9t61xa4XWCSXfvMgOXFMgZDZD"
+user_token="EAACEdEose0cBADUqOftb462r6Fzc6SW5hsX4YLltZCCu4iKTruZCVYeIQyfGLoeyZAQpdVtZC8ZASWMQwNvqcYZCSwSfy4LeI5APNvTK7eFRQkdwLnh0sxHBhNSxUTVZCM8d8LYoLZBYF2pQTqQ8YYtPwtzYZB7aEIm55eWk6rZAgSN8U3ZBRNIuLhYcqvll8twP8T4MnlawJF2eQZDZD"
 
 def get_current_user_profile():
     profile = graph.get_object("me")
@@ -34,11 +35,19 @@ def get_profile_info_for_user(user_id):
 def is_name_exact_match(given_first_name, given_last_name, first_name_match, last_name_match):
     return given_first_name == first_name_match and given_last_name == last_name_match
 
+def get_public_profile_url_from_source(app_scoped_url):
+    response = requests.get(app_scoped_url)
+    print(response.text)
+        
 def find_profiles_matching_name(first_name, last_name):
     matching_users = get_matching_ids_by_user_name('{}+{}'.format(first_name, last_name))
     for user in matching_users['data']:        
-        (info, photos) = get_profile_info_for_user(user['id'])
+        (info, photos) = get_profile_info_for_user(user['id'])        
         profile_url = info['link']
+        # Convert datetime string to DateTime object
+        date = info['updated_time'].split('+')
+        updated_datetime = datetime.datetime.strptime(date[0], "%Y-%m-%dT%H:%M:%S")
+        info['updated_time'] = updated_datetime.date()
         # TODO: Need to get public profile link from the app-scoped profile id
         if is_name_exact_match(first_name, last_name, info['first_name'], info['last_name']):
             print(info)
