@@ -3,8 +3,6 @@ import OptionalFormComponent from './OptionalFormComponent';
 import InputComponent from './InputComponent';
 import StateDropdownComponent from './StateDropdownComponent';
 
-import '../styles/SearchForm.css';
-
 class SearchFormComponent extends Component {
   constructor(props) {
     super(props);
