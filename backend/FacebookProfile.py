@@ -9,7 +9,7 @@ import datetime
 from bs4 import BeautifulSoup
    
 class FacebookProfile:
-    def __init__(self,firstName=None,lastName=None,profileUrl=None,fbInput=None):
+    def __init__(firstName=None,lastName=None,fullName=None,profileUrl=None,gender=None,occupation=None,organization=None, location=None,relationshipStatus=None, fbInput=None):
         self.firstName = firstName
         self.lastName = lastName
         self.profileUrl = profileUrl

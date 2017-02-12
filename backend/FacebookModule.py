@@ -7,6 +7,7 @@ import urllib.parse
 import urllib.request
 import requests
 import datetime
+import FacebookProfile
 
 class FacebookModule:
     APP_SECRET='4b768f8a218db2a17f34710b34d38c8f'
@@ -51,9 +52,15 @@ class FacebookModule:
         response = requests.get(app_scoped_url)
         print(response.text)
     
+    def initialize_info():
+        info = {'first_name':None, 'last_name':None, 'name':None, 'link':None, \
+        'gender':None, 'work':None, 'location':None, 'relationship_status':None}
+        return info
+        
     def find_profiles_matching_name(self, first_name, last_name):
         matching_users = self.get_matching_ids_by_user_name('{}+{}'.format(first_name, last_name))
-        for user in matching_users['data']:        
+        for user in matching_users['data']:   
+            info = initialize_info()
             (info, photos) = self.get_profile_info_for_user(user['id'])        
             profile_url = info['link']
             # Convert datetime string to DateTime object
@@ -63,6 +70,10 @@ class FacebookModule:
             # TODO: Need to get public profile link from the app-scoped profile id
             if is_name_exact_match(first_name, last_name, info['first_name'], info['last_name']):
                 print(info)
+                profile = FacebookProfile(info['first_name'], info['last_name'], \
+                                          info['name'], info['link'], info['gender'], \
+                                          info['work'], None, info['location'], \
+                                          info['relationship_status'])
                 
     def find_profile_from_url(self, url):
         last_slash = url.rfind('/')
