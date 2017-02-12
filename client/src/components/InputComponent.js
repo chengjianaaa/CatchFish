@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 const InputComponent = (props) => {
   return (
     <input
