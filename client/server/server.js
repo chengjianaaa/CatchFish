@@ -18,9 +18,8 @@ app.set('view engine', 'html');
 app.use(express.static(__dirname - '/server' + '/client/views'));
 app.use(bodyParser.json());
 
-
-// Routes
-// require('./routes/routes')(app);
+//Routes
+require('./routes/routes')(app);
 
 app.listen(port, function() {
   console.log('The magic is on ' + ip + ':' + port);
