@@ -22,14 +22,11 @@ body {
   color: #333;
 }
 
-form {
-  /*background-color: blue;*/
-}
-
 input {
   display: block;
-  justify-content: center;
-  align-items: center;
+  border-radius: 3px;
+  width: 100%;
+  background-color: rgba(245,245,245, 0.75);
 }
 
 button {
@@ -37,26 +34,39 @@ button {
 }
 
 .flex-container {
+  display: inline-flex;
+  flex-direction: row;
+  width: 100%;
   justify-content: center;
 }
 
 .flex-container.horiz {
-  display: inline-flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .flex-container.vert {
-  display: inline-flex;
   flex-direction: column;
+  justify-content: space-around;
+}
+
+form {
+  background-color: #CCC;
+  margin-top: 50px;
+  padding: 25px;
+  width: 75%;
+}
+
+.dropzone {
+  border: 1px solid #333;
+  height: 100px;
+  width: 100px;
+  /*margin-top: 25%;*/
 }
 
 .inputs {
   margin-left: 7%;
-}
-
-input {
-  border-radius: 3px;
-
+  /*background-color: blue;*/
 }
 
 .submit {
@@ -64,14 +74,4 @@ input {
   margin-top: 5%;
   background-color: white;
   border: 1px solid #333;
-}
-
-form {
-  background-color: #CCC;
-  height: 200px;
-  margin-top: 50px;
-}
-
-.main {
-  padding-top: 10%;
 }
