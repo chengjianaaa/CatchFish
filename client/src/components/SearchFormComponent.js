@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import OptionalFormComponent from './OptionalFormComponent';
 import InputComponent from './InputComponent';
 import StateDropdownComponent from './StateDropdownComponent';
 
