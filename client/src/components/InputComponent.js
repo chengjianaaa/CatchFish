@@ -5,7 +5,8 @@ const InputComponent = (props) => {
     <div>
     <label>
       {props.label}
-      <input onChange={function(e){props.handleChange(e, props.property)}}/>
+      <input onChange={function(e){
+        props.handleChange(e, props.property)}} placeholder={props.placeholder}/>
     </label>
     </div>
   )
