@@ -8,8 +8,8 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #333;
+  height: 50px;
   padding: 20px;
   color: white;
 }
@@ -18,7 +18,60 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+body {
+  color: #333;
+}
+
+form {
+  /*background-color: blue;*/
+}
+
+input {
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  display: block;
+}
+
+.flex-container {
+  justify-content: center;
+}
+
+.flex-container.horiz {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.flex-container.vert {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.inputs {
+  margin-left: 7%;
+}
+
+input {
+  border-radius: 3px;
+
+}
+
+.submit {
+  width: 25%;
+  margin-top: 5%;
+  background-color: white;
+  border: 1px solid #333;
+}
+
+form {
+  background-color: #CCC;
+  height: 200px;
+  margin-top: 50px;
+}
+
+.main {
+  padding-top: 10%;
 }
