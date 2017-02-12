@@ -28,7 +28,7 @@ class SearchFormComponent extends Component {
     // .then(console.log('YOUR RESPONSE WAS SENT!!!!!!!!!!!!'))
     // .then((response) => console.log(response))
     // .catch((error) => console.log(error))
-    // } 
+    // }
     if(this.state.image !== ''){
     fetch(`http://localhost:1337/api/humanCheck/${this.state.image}`,{
       method:'GET',
@@ -44,6 +44,7 @@ class SearchFormComponent extends Component {
   }
 
   handleChange(e, property) {
+    console.log(e, property)
     let tempState = {};
     tempState[property] = e.target.value
     e.preventDefault()
@@ -51,6 +52,14 @@ class SearchFormComponent extends Component {
     this.setState(tempState)
     console.log(this.state)
   };
+
+  handleDropdownSelect(key, prop) {
+    let tempState = {};
+    tempState[prop] = key;
+    // e.preventDefault()
+    this.setState(tempState)
+    console.log(this.state)
+  }
 
   toggleOptions() {
     this.setState(
@@ -92,7 +101,7 @@ class SearchFormComponent extends Component {
             <div className="flex-container horiz">
               <InputComponent type="tel" handleChange={this.handleChange.bind(this)} property={'phone'} className="flex-item" placeholder={"Phone"}/>
 
-              <StateDropdownComponent handleChange={this.handleChange.bind(this)} property={'state'} className="flex-item dropdown" placeholder={"State"}/>
+              <StateDropdownComponent handleChange={this.handleDropdownSelect.bind(this)} property={'state'} className="flex-item dropdown" placeholder={"State"}/>
             </div>
 
             <div className = "flex-container horiz">
