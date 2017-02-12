@@ -6,6 +6,7 @@ import { DropdownButton, MenuItem } from 'react-bootstrap'
 const StateDropdownComponent = (props) => {
   return (
     <DropdownButton
+      id={props.property}
       title="State"
       onChange={function(e){
         props.handleChange(e, props.property)
