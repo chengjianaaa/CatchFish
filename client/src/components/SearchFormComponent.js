@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import InputComponent from './InputComponent';
 import StateDropdownComponent from './StateDropdownComponent';
 import Dropzone from 'react-dropzone';
-
+import axios from 'axios';
 
 class SearchFormComponent extends Component {
   constructor(props) {
@@ -21,7 +21,25 @@ class SearchFormComponent extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('submitted!', this.state)
+    console.log('submitted!')
+    //facebook get request
+    // if((this.state.firstName !== '' && this.state.lastName !== '') || (this.state.facebook !== '')){
+    // axios.get(`/api/facebook/${this.state.firstName}/${this.state.lastName}/${this.state.facebook}/${this.state.state}`)
+    // .then(console.log('YOUR RESPONSE WAS SENT!!!!!!!!!!!!'))
+    // .then((response) => console.log(response))
+    // .catch((error) => console.log(error))
+    // } 
+    if(this.state.image !== ''){
+    fetch(`http://localhost:1337/api/humanCheck/${this.state.image}`,{
+      method:'GET',
+      headers:{
+        'content-type':'application.json',
+
+      }
+    })
+    .then(console.log('PICTURE SENT: ', this.state.image))
+    .then((response) => console.log('The Response is', response));
+  }
     console.log('E', e.target)
   }
 
