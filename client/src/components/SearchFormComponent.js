@@ -47,40 +47,45 @@ class SearchFormComponent extends Component {
 
   render() {
     return (
+      <div className="flex-container">
       <form onSubmit={this.handleSubmit.bind(this)}>
-      <div className="flex-container horiz main">
-        <Dropzone
-          multiple={false}
-          accept="image/*"
-          onDrop={this.onImageDrop.bind(this)}
-          className="flex-item">
-          <p>Drop an image!</p>
-        </Dropzone>
-
-        <div className="inputs flex-container vert">
-          <div className="flex-container horiz">
-            <InputComponent handleChange={this.handleChange.bind(this)} property={'firstName'} className="flex-item" placeholder={"First Name"}/>
-
-            <InputComponent handleChange={this.handleChange.bind(this)}  property={'lastName'} className="flex-item" placeholder={"Last Name"}/>
+        <div className="flex-container horiz main">
+          <div className="flex-item imageDrop ">
+            <Dropzone
+              multiple={false}
+              accept="image/*"
+              onDrop={this.onImageDrop.bind(this)}
+              className="flex-item dropzone">
+              <p>Drop an image or click to upload</p>
+            </Dropzone>
           </div>
 
-          <InputComponent handleChange={this.handleChange.bind(this)} property={'email'} className="flex-item" placeholder={"Email"}/>
+          <div className="inputs flex-container vert">
+            <div className="flex-container horiz">
+              <InputComponent handleChange={this.handleChange.bind(this)} property={'firstName'} className="flex-item" placeholder={"First Name"}/>
 
-          <InputComponent handleChange={this.handleChange.bind(this)} property={'facebook'} className="flex-item" placeholder={"Facebook URL"}/>
+              <InputComponent handleChange={this.handleChange.bind(this)}  property={'lastName'} className="flex-item" placeholder={"Last Name"}/>
+            </div>
 
-          <div className="flex-container horiz">
-            <InputComponent type="tel" handleChange={this.handleChange.bind(this)} property={'phone'} className="flex-item" placeholder={"Phone"}/>
+            <InputComponent handleChange={this.handleChange.bind(this)} property={'email'} className="flex-item full" placeholder={"Email"}/>
 
-            <StateDropdownComponent handleChange={this.handleChange.bind(this)} property={'state'} className="flex-item" placeholder={"State"}/>
+            <InputComponent handleChange={this.handleChange.bind(this)} property={'facebook'} className="flex-item full" placeholder={"Facebook URL"}/>
+
+            <div className="flex-container horiz">
+              <InputComponent type="tel" handleChange={this.handleChange.bind(this)} property={'phone'} className="flex-item" placeholder={"Phone"}/>
+
+              <StateDropdownComponent handleChange={this.handleChange.bind(this)} property={'state'} className="flex-item dropdown" placeholder={"State"}/>
+            </div>
+
+            <div className = "flex-container horiz">
+              <input type="submit" value="Submit" className="flex-item submit" />
+            </div>
           </div>
-
-          <input type="submit" value="Submit" className="flex-item submit"/>
-
-        </div>
 
         </div>
 
       </form>
+      </div>
     )
   }
 };
