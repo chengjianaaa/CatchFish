@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import InputComponent from './InputComponent';
 import StateDropdownComponent from './StateDropdownComponent';
+import Dropzone from 'react-dropzone';
+
 
 class SearchFormComponent extends Component {
   constructor(props) {
@@ -10,24 +12,26 @@ class SearchFormComponent extends Component {
       lastName: '',
       email: '',
       state: '',
-      country: '',
       phone: '',
       email: '',
-      linkedIn: '',
       facebook: '',
+      image: '',
     };
   }
 
-  handleSubmit() {}
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log('submitted!', this.state)
+    console.log('E', e.target)
+  }
 
   handleChange(e, property) {
-    let tempObj = {};
-    tempObj[property] = e.target.value
+    let tempState = {};
+    tempState[property] = e.target.value
     e.preventDefault()
 
-    this.setState(tempObj)
+    this.setState(tempState)
     console.log(this.state)
-
   };
 
   toggleOptions() {
@@ -36,19 +40,38 @@ class SearchFormComponent extends Component {
     );
   };
 
+  onImageDrop(image){
+    console.log(image);
+    this.setState({image: image});
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
-        <InputComponent handleChange={this.handleChange.bind(this)} property={'firstName'} label={"First Name: "}/>
-        <InputComponent handleChange={this.handleChange.bind(this)}  property={'lastName'} label={"Last Name: "}/>
-        <InputComponent handleChange={this.handleChange.bind(this)} property={'email'} label={"Email: "}/>
-        <InputComponent handleChange={this.handleChange.bind(this)} property={'phone'} label={"Phone: "}/>
 
-        <StateDropdownComponent handleChange={this.handleChange.bind(this)} property={'state'} label={"State: "}/>
+        <Dropzone
+          multiple={false}
+          accept="image/*"
+          onDrop={this.onImageDrop.bind(this)}>
+          <p>Drop an image!</p>
+        </Dropzone>
 
-        <InputComponent handleChange={this.handleChange.bind(this)} property={'country'} label={"Country: "}/>
-        <InputComponent handleChange={this.handleChange.bind(this)} property={'linkedIn'} label={"linkedIn URL: "}/>
-        <InputComponent handleChange={this.handleChange.bind(this)} property={'facebook'} label={"Facebook URL: "}/>
+        <InputComponent handleChange={this.handleChange.bind(this)} property={'firstName'} placeholder={"First Name"}/>
+
+        <InputComponent handleChange={this.handleChange.bind(this)}  property={'lastName'} placeholder={"Last Name"}/>
+
+        <InputComponent handleChange={this.handleChange.bind(this)} property={'email'} placeholder={"Email"}/>
+
+        <InputComponent type="tel" handleChange={this.handleChange.bind(this)} property={'phone'} placeholder={"Phone"}/>
+
+        <InputComponent handleChange={this.handleChange.bind(this)} property={'linkedIn'} placeholder={"linkedIn URL"}/>
+
+        <InputComponent handleChange={this.handleChange.bind(this)} property={'facebook'} placeholder={"Facebook URL"}/>
+
+        <StateDropdownComponent handleChange={this.handleChange.bind(this)} property={'state'} placeholder={"State"}/>
+
+        <input type="submit" value="Submit" />
+
       </form>
     )
   }

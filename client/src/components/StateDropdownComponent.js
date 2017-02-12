@@ -1,9 +1,16 @@
-import React from 'react';
+    import React from 'react';
+//TODO: Reimplement as Typeahead
 // html from https://gist.github.com/jwmalara/11190014
 
-const StateDropdownComponent = () => {
+const StateDropdownComponent = (props) => {
   return (
-    <select name="state">
+    <select
+      style={styles.selectStyle}
+      name="state"
+      onChange={function(e){
+        props.handleChange(e, props.property)
+      }}
+    >
       <option value="AL">Alabama</option>
       <option value="AK">Alaska</option>
       <option value="AZ">Arizona</option>
@@ -56,6 +63,12 @@ const StateDropdownComponent = () => {
       <option value="WY">Wyoming</option>
     </select>
   );
+}
+
+const styles = {
+  selectStyle: {
+    display: 'inline',
+  }
 }
 
 export default StateDropdownComponent
