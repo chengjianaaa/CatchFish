@@ -67,19 +67,19 @@ class SearchFormComponent extends Component {
               <InputComponent handleChange={this.handleChange.bind(this)}  property={'lastName'} className="flex-item" placeholder={"Last Name"}/>
             </div>
 
-            <InputComponent handleChange={this.handleChange.bind(this)} property={'email'} id="email" className="flex-item full" placeholder={"Email"}/>
+            <InputComponent handleChange={this.handleChange.bind(this)} property={'email'} className="flex-item full" placeholder={"Email"}/>
 
-            <InputComponent handleChange={this.handleChange.bind(this)} property={'facebook'} id="fb" className="flex-item full" placeholder={"Facebook URL"}/>
+            <InputComponent handleChange={this.handleChange.bind(this)} property={'facebook'} className="flex-item full" placeholder={"Facebook URL"}/>
 
             <div className="flex-container horiz">
               <InputComponent type="tel" handleChange={this.handleChange.bind(this)} property={'phone'} className="flex-item" placeholder={"Phone"}/>
 
               <StateDropdownComponent handleChange={this.handleChange.bind(this)} property={'state'} className="flex-item dropdown" placeholder={"State"}/>
             </div>
-            <div className = "flex-container horiz">
-              <input type="submit" value="Submit" className="flex-item submit"/>
-            </div>
 
+            <div className = "flex-container horiz">
+              <input type="submit" value="Submit" className="flex-item submit" />
+            </div>
           </div>
 
         </div>
