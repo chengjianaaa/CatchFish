@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import './inputs.css';
-
 
 const InputComponent = (props) => {
   return (

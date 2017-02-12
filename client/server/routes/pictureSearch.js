@@ -3,8 +3,10 @@
 const getPicInfo = (req,res) => {
   let api_key = process.env.Google_Image_Key;
   let api_cx = process.env.Google_Image_Cx;
+  let picUrl = req.params;
+  
   const options = {
-    url:'https://www.googleapis.com/customsearch/v1?cx=${api_cx}&key=${api_key}&searchtype=”image”&num=10'
+    url:`https://www.googleapis.com/customsearch/v1?cx=${api_cx}&key=${api_key}&searchtype=”image”&num=10`
   };
   request(options, (err, response, body) => {
     if(err){
@@ -13,9 +15,7 @@ const getPicInfo = (req,res) => {
 
     body = JSON.parse(body);
 
-    const responseObj = {};
-
-    res.status(200).send(JSON.stringify(responseObj));
+    res.status(200).send(JSON.stringify(response));
   });
 };
 
